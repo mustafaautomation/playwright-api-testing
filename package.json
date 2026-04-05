@@ -1,0 +1,27 @@
+{
+  "name": "playwright-api-testing",
+  "version": "1.0.0",
+  "description": "API testing with Playwright APIRequestContext — no browser needed, full REST validation",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:users": "npx playwright test tests/users/",
+    "test:auth": "npx playwright test tests/auth/",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write \"**/*.ts\"",
+    "format:check": "prettier --check \"**/*.ts\""
+  },
+  "author": "Quvantic <info@quvantic.com> (https://quvantic.com)",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/mustafaautomation/playwright-api-testing.git" },
+  "homepage": "https://github.com/mustafaautomation/playwright-api-testing#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": { "node": ">=20.0.0" }
+}
