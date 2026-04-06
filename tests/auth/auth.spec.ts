@@ -1,47 +1,41 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('POST /api/login', () => {
+test.describe('POST /auth/login', () => {
   test('should return token on valid login', async ({ request }) => {
-    const response = await request.post('/api/login', {
-      data: { email: 'eve.holt@reqres.in', password: 'cityslicka' },
+    const response = await request.post('/auth/login', {
+      data: { username: 'emilys', password: 'emilyspass' },
     });
 
     expect(response.status()).toBe(200);
     const body = await response.json();
-    expect(body.token).toBeTruthy();
-    expect(typeof body.token).toBe('string');
+    expect(body.accessToken).toBeTruthy();
+    expect(body.refreshToken).toBeTruthy();
+    expect(body.username).toBe('emilys');
   });
 
-  test('should return 400 without password', async ({ request }) => {
-    const response = await request.post('/api/login', {
-      data: { email: 'eve.holt@reqres.in' },
+  test('should return 400 for invalid password', async ({ request }) => {
+    const response = await request.post('/auth/login', {
+      data: { username: 'emilys', password: 'wrongpassword' },
     });
 
     expect(response.status()).toBe(400);
     const body = await response.json();
-    expect(body.error).toBe('Missing password');
-  });
-});
-
-test.describe('POST /api/register', () => {
-  test('should register with valid credentials', async ({ request }) => {
-    const response = await request.post('/api/register', {
-      data: { email: 'eve.holt@reqres.in', password: 'pistol' },
-    });
-
-    expect(response.status()).toBe(200);
-    const body = await response.json();
-    expect(body.id).toBeTruthy();
-    expect(body.token).toBeTruthy();
+    expect(body.message).toBeTruthy();
   });
 
-  test('should fail registration without password', async ({ request }) => {
-    const response = await request.post('/api/register', {
-      data: { email: 'eve.holt@reqres.in' },
+  test('should return 400 for non-existent user', async ({ request }) => {
+    const response = await request.post('/auth/login', {
+      data: { username: 'nonexistent_user_xyz', password: 'test' },
     });
 
     expect(response.status()).toBe(400);
-    const body = await response.json();
-    expect(body.error).toBe('Missing password');
+  });
+
+  test('should return 400 for empty body', async ({ request }) => {
+    const response = await request.post('/auth/login', {
+      data: {},
+    });
+
+    expect(response.status()).toBe(400);
   });
 });
