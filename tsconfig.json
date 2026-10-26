@@ -1,1 +1,17 @@
-{ "compilerOptions": { "target": "ES2022", "module": "CommonJS", "strict": true, "esModuleInterop": true, "skipLibCheck": true, "moduleResolution": "node" }, "include": ["tests/**/*", "playwright.config.ts"] }
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "tests/**/*",
+    "playwright.config.ts"
+  ]
+}
