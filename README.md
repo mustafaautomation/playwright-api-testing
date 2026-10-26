@@ -76,9 +76,11 @@ No browser. No page. Just `request` fixture → HTTP calls → assertions.
 playwright-api-testing/
 ├── tests/
 │   ├── users/
-│   │   ├── list-users.spec.ts      # 4 tests — pagination, email format, headers
-│   │   ├── single-user.spec.ts     # 4 tests — CRUD operations
-│   │   └── response-time.spec.ts   # 2 tests — SLA validation
+│   │   ├── list-users.spec.ts      # 6 tests — pagination, email format, headers
+│   │   ├── single-user.spec.ts     # 11 tests — CRUD operations
+│   │   └── response-time.spec.ts   # 5 tests — SLA validation
+│   ├── products/
+│   │   └── products.spec.ts        # 9 tests
 │   └── auth/
 │       └── auth.spec.ts            # 4 tests — login, register, validation
 ├── playwright.config.ts             # baseURL, parallel, retries
