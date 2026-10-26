@@ -10,7 +10,7 @@
     "format": "prettier --write \"**/*.ts\"",
     "format:check": "prettier --check \"**/*.ts\""
   },
-  "author": "Quvantic <info@quvantic.com> (https://quvantic.com)",
+  "author": "Muhammad Mustafa (https://github.com/mustafaautomation)",
   "license": "MIT",
   "repository": {
     "type": "git",
